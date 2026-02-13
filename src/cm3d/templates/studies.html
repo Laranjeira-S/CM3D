@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Studies{% endblock %}
+{% block content %}
+    <h2>Studies</h2>
+    <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Authors</th>
+        <th>Groups</th>
+        <th>Added by</th>
+        <th>Date added</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for study in studies %}
+        <tr>
+            <td>{{ study.id }}</td>
+            <td><a href="{{ url_for('show_study', study_id=study.id) }}">{{ study.title }}</a></td>
+            <td>{{ study.authors }}</td>
+            <td>{{ study.groups|length }}</td>
+            <td>{{ study.added_by }}</td>
+            <td>{{ study.date_input }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,19 @@
+name: cm3d
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - sqlalchemy
+  - openpyxl
+  - pytest
+  - pip
+  - pip:
+      - -e .
+      - rotate-backups
+  - click
+  - flask
+  - flask-httpauth
+  - pandas
+  - waitress
+  - faker

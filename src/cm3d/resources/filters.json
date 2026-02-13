@@ -1,0 +1,8 @@
+{
+  "Study by title": "study.title like '%cancer%'",
+  "study by ID": "study.id = 12",
+  "model group": "[group].model like '%abc%'",
+  "Protein Treatment": "[group].protein_treatment in ('xyz', 'abc')",
+  "measurement by range": "measurement.test_type = 'Imono flurecence' and measurement.measurement = 'hjk' and measurement.value < 4000",
+  "composite example": "biological_replica.cell_name = 'MDDA/MB/231' and [group].protein_treatment = 'jkl' and measurement.measurement in ('abc', 'xyz') and measurement.value between 500 and 6000"
+}

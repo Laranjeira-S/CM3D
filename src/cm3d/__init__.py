@@ -1,0 +1,7 @@
+DATABASE_FILENAME = 'cm3d.db'
+INPUT_TEMPLATE_FILENAME = 'CM3d_input_template.xlsx'
+DOWNLOADS_DIRNAME = 'downloads'
+UPLOADS_DIRNAME = 'uploads'
+BACKUPS_DIRNAME = 'backups'
+USERS_FILENAME = 'users.json'
+FILTERS_FILENAME = 'filters.json'

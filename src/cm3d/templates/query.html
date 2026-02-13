@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Query{% endblock %}
+
+{% block content %}
+    <script>
+        function set_filter(sql) {
+            document.getElementById('sql').value = sql;
+        }
+    </script>
+    <h2>Run query</h2>
+    <p>
+        {% for key, value in filters.items() %}
+            <a href="javascript:" onclick='set_filter("{{ value }}")'>{{ key }}</a>;
+        {% endfor %}
+    </p>
+
+    <form method=post>
+        <label>Filter:<br/>
+            <textarea id="sql" name="sql" cols="80" rows="4">{{ sql }}</textarea>
+        </label><br/>
+        <label><input type="checkbox" name="extras" value="on" {{ show_extras }}/> Show measurement extras</label><br /><br />
+        <p>
+            <button class="btn btn-primary" name="action" type="submit" value="View">View</button>
+            <button class="btn btn-primary" name="action" type="submit" value="Download" {{ 'disabled' if records is none }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"></path>
+                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"></path>
+                </svg>
+                Download</button>
+        </p>
+    </form>
+    <br/>
+    {% if records is not none %}
+        {{ records.to_html(table_id="data", classes="table table-striped", render_links=True, escape=False)|safe }}
+    {% elif records is none and sql|length > 0 %}
+        <p>No record(s) matching filter found.</p>
+    {% endif %}
+{% endblock %}
+
+{% if records is not none %}
+    {% block scripts %}
+        <script>
+            $(document).ready(function () {
+                $('#data').DataTable({
+                    scrollX: true,
+                    searching: false
+                });
+            });
+        </script>
+    {% endblock %}
+{% endif %}

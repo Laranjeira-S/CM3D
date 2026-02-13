@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
+        <style>
+            label {
+                font-weight: bold;
+            }
+            #page {
+                padding-bottom: 70px;
+            }
+        </style>
+        <title>{% block title %}{% endblock %} - CM3D</title>
+    {% endblock %}
+</head>
+<body>
+<div id="page" class="container">
+    <div class="pb-4">
+        <nav class="navbar navbar-light navbar-expand-md border rounded"  style="background-color: #5496f6;">
+            <div class="container-fluid">
+                <nav class="navbar">
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        <img src="/static/cylinder.svg" width="80" height="80" class="me-2" alt="">
+                        <b style="font-size: larger">  CM3D</b>
+                    </a>
+                </nav>
+                </a>
+                <div id="navcol-1" class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="/">Help</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="content">{% block content %}{% endblock %}</div>
+
+    <footer class="text-end fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-muted my-2">Developed by <a target="_blank" href="https://www.ucl.ac.uk/advanced-research-computing/">ARC</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+    {% block scripts %}{% endblock %}
+</div>
+</body>
+</html>

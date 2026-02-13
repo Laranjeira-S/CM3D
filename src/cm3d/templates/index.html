@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div style="font-size: larger">
+    <p>Welcome <b>{{ username }}</b></p>
+    <ul>
+        <li><a href="/studies">List studies</a></li>
+        <li><a href="/query">Query database</a></li>
+        <li><a href="/download-db">Download all data (flattened)</a></li>
+    </ul>
+    <ul>
+        <li><a href="/download-template">Download Excel study template</a></li>
+        <li><a href="/upload">Upload completed study file</a></li>
+    </ul>
+    </div>
+{% endblock %}
