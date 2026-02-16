@@ -81,11 +81,14 @@ def add_measurements(all_sheets, biological_replicas_lookup):
                     value=row['Value'],
                     unit=row['Units'],
                     measurement=row['Measurement'],
-                    test_type=name[5:],
+                    morphological_information=row['Morphological information'],
+                    analysis_workflow=row['Analysis workflow'],
+		    notes=row['Notes'],
+		    test_type=name[5:],
                     biological_replica=biological_replicas_lookup[int(row['Biological replica'])])
                 # add any other columns which are not core measurement attributes
                 for column in sheet.columns:
-                    if column not in {'Biological replica', 'Timepoint', 'Method', 'Measurement', 'Value', 'Units'}:
+                    if column not in {'Biological replica', 'Timepoint', 'Method', 'Measurement', 'Value', 'Units', 'Morphological information', 'Analysis workflow', 'Notes'}:
                         if row[column] is not None and not pd.isna(row[column]):
                             measurement[column] = row[column]
 

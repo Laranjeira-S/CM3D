@@ -135,8 +135,10 @@ class Measurement(ProxiedDictMixin, Base):
     value = Column(Float)
     unit = Column(String)
     test_type = Column(String)
-    notes = Column(String)
-
+    morphological_information=Column(String)
+    analysis_workflow=Column(String)
+    notes=Column(String)
+	
     # Add relationship between study and experiment
     biological_replica = relationship("Biological_replica", back_populates='measurements')
     data = relationship("MeasurementData", collection_class=attribute_mapped_collection("key"),  cascade="all, delete-orphan")
